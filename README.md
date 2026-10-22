@@ -1,6 +1,6 @@
 # mini-fetch
 
-A lightweight, lightning-fast system information tool written in C, designed for minimal resource usage and clean terminal aesthetics.
+A light, fast system fetch tool written in C (ofc), minimal and good for minimal rices (use it pls, I need to see tiktoks with it)
 
 ## Features
 
@@ -11,20 +11,28 @@ A lightweight, lightning-fast system information tool written in C, designed for
 
 ## Requirements
 
-To build and run `mini-fetch`, you will need:
+To build and run `minifetch`, you will need:
 * `gcc compiler` (GNU's compiler to compile shit)
 * `make tool` (GNU's make tool for shit)
 * A arch based system or wsl arch for winbloat users
-* 
-## important note
-after installation run minifetch instead of mini-fetch
 
 ## Installation
-
-Clone the repository, compile the code, and install it on you system like a real chad:
+Clone the repo (very important), compile the code (gentoo shit), and install it on you system like a real chad:
 
 ```bash
 git clone [https://github.com/1plushype/mini-fetch.git](https://github.com/1plushype/mini-fetch.git)
 cd mini-fetch
 make
 sudo make install
+```
+## important note
+after installation run `minifetch` instead of `mini-fetch`
+
+### license 
+`GPL-v3` I suppose
+
+### also visit my TikTok page 
+```bash
+https://www.tiktok.com/@1plushypemainacc
+```
+
