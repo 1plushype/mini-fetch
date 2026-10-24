@@ -4,14 +4,14 @@ A light, fast system fetch tool written in C (ofc), minimal and good for minimal
 
 ## Features
 
-* Custom ASCII art logo
-* Displays system username and hostname like what it says in the code
+* ASCII arch logo
+* it says the system, username and hostname like what it says in the code
 * Shows current OS (arch), Kernel, Uptime, RAM usage, and Terminal emulator
 * Written entirely in C bcs it is fast and isnt bloated
 
-## Requirements
-
+## things you need
 To build and run `minifetch`, you will need:
+* `fingers` to type (most important one of the list)
 * `gcc compiler` (GNU's compiler to compile shit)
 * `make tool` (GNU's make tool for shit)
 * A arch based system or wsl arch for winbloat users
