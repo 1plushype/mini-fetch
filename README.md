@@ -20,13 +20,13 @@ To build and run `minifetch`, you will need:
 Clone the repo (very important), compile the code (gentoo shit), and install it on you system like a real chad:
 
 ```bash
-git clone [https://github.com/1plushype/mini-fetch.git](https://github.com/1plushype/mini-fetch.git)
+git clone https://github.com/1plushype/mini-fetch
 cd mini-fetch
-make
+make (clean, if you want to)
 sudo make install
 ```
 ## important note
-after installation run `minifetch` instead of `mini-fetch`
+after installation run `minifetch` instead of `mini-fetch` bcs i notice some users do that, so dont make exact same mistake
 
 ### license 
 `GPL-v3` I suppose
