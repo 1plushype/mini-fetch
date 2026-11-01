@@ -22,7 +22,7 @@ Clone the repo (very important), compile the code (gentoo shit), and install it 
 ```bash
 git clone https://github.com/1plushype/mini-fetch
 cd mini-fetch
-make (clean, if you want to)
+make
 sudo make install
 ```
 ## important note
