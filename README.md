@@ -12,8 +12,10 @@ A light, fast system fetch tool written in C (ofc), minimal and good for minimal
 ## things you need
 To build and run `minifetch`, you will need:
 * `fingers` to type (most important one of the list)
-* `gcc compiler` (GNU's compiler to compile shit)
-* `make tool` (GNU's make tool for shit)
+* `gcc compiler` (GNU's compiler to compile the repo)
+* `clang compiler(llvm)` (optional, but important) 
+* `make tool` (GNU's make tool or any other make tool)
+* `git` (to clone repo)
 * A arch based system or wsl arch for winbloat users
 
 ## Installation
