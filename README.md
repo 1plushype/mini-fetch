@@ -29,7 +29,9 @@ sudo make install
 after installation run `minifetch` instead of `mini-fetch` bcs i notice some users do that, so dont make exact same mistake
 
 ### license 
-`GPL-v3` I suppose
+
+mini-fetch is licensed under the GNU General Public License v3.0.
+See the [LICENSE](LICENSE) file for the full text.
 
 ### also visit my TikTok page 
 ```bash
