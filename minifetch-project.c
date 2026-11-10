@@ -187,12 +187,11 @@ int main(void) {
     }
 
     else if (strcmp(os, "Manjaro Linux") == 0) {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
             printf("\033[1;36m%s\033[0m  %s\n", manjaro[i], info[i]);
     }
-
     else if (strcmp(os, "CachyOS") == 0) {
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 8; i++)
             printf("\033[1;36m%s\033[0m  %s\n", cachyos[i], info[i]);
     }
 
@@ -206,8 +205,8 @@ int main(void) {
             printf("\033[1;36m%s\033[0m  %s\n", endeavouros[i], info[i]);
     }
 
-    else if (strcmp(os, "Garuda Linux") == 0) {
-        for (int i = 0; i < 7; i++)
+    else if (strcmp(os, "Garuda ") == 0) {
+        for (int i = 0; i < 5; i++)
             printf("\033[1;36m%s\033[0m  %s\n", garuda[i], info[i]);
     }
     
