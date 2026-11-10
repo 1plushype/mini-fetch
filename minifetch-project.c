@@ -5,7 +5,7 @@
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
 
-static const char *logo[] = {
+static const char *arch[] = {
     "      /\\       ",
     "     /  \\      ",
     "    /    \\     ",
@@ -13,6 +13,62 @@ static const char *logo[] = {
     "  /        \\   ",
     " /   |''|   \\  ",
     "/_-''    ''-_\\ ",
+};
+
+static const char *cachyos[] = {
+    "    /''''''''''''''''/",
+    "   /''''''''''''''''/ ",
+    "  /''''''''/          ",
+    " /''''''''/           ",
+    " \\........\\           ",
+    "  \\........\\          ",
+    "   \\.................../",
+    "    \\.................../",
+};
+
+static const char *manjaro[] = {
+    "||||||||||  ||||",
+    "||||||||||  ||||",
+    "||||        ||||",   
+    "||||  ||||  ||||",
+    "||||  ||||  ||||",
+    "||||  ||||  ||||",
+    "||||  ||||  ||||",
+    "||||  ||||  ||||",
+};
+
+static const char *artix[] = {
+    "      /\\",
+    "     /  \\",
+    "    /`'.,\\",
+    "   /     ',",
+    "  /      ,`\\",
+    " /   ,.'`.  \\",
+    "/.,'`     `'.\\",
+};
+
+
+static const char *endeavouros[] = {
+    "          /o.",
+    "        /sssso-",
+    "      /ossssssso:",
+    "    /ssssssssssso+",
+    "  /ssssssssssssssso+",
+    "//osssssssssssssso+-",
+    " `+++++++++++++++-`",
+};
+
+
+
+
+
+
+static const char *garuda[] = {
+    "     .----.",
+    "   .'   ,  '.",
+    " .'    '-----|",
+    "'.   -----,",
+    "  '.____.'",
 };
 
 const char* get_terminal_env(void) {
@@ -125,8 +181,38 @@ int main(void) {
     get_terminal_name(term_name, sizeof(term_name));
     snprintf(info[5], sizeof info[5], "Terminal: %s", term_name);
 
-    for (int i = 0; i < 7; i++)
-        printf("\033[1;36m%s\033[0m  %s\n", logo[i], info[i]);
+    if (strcmp(os, "Arch Linux") == 0) {
+        for (int i = 0; i < 7; i++)
+            printf("\033[1;36m%s\033[0m  %s\n", arch[i], info[i]);
+    }
+
+    else if (strcmp(os, "Manjaro Linux") == 0) {
+        for (int i = 0; i < 7; i++)
+            printf("\033[1;36m%s\033[0m  %s\n", manjaro[i], info[i]);
+    }
+
+    else if (strcmp(os, "CachyOS") == 0) {
+        for (int i = 0; i < 7; i++)
+            printf("\033[1;36m%s\033[0m  %s\n", cachyos[i], info[i]);
+    }
+
+    else if (strcmp(os, "Artix Linux") == 0) {
+        for (int i = 0; i < 7; i++)
+            printf("\033[1;36m%s\033[0m  %s\n", artix[i], info[i]);
+    }
+
+    else if (strcmp(os, "EndeavourOS") == 0) {
+        for (int i = 0; i < 7; i++)
+            printf("\033[1;36m%s\033[0m  %s\n", endeavouros[i], info[i]);
+    }
+
+    else if (strcmp(os, "Garuda Linux") == 0) {
+        for (int i = 0; i < 7; i++)
+            printf("\033[1;36m%s\033[0m  %s\n", garuda[i], info[i]);
+    }
+    
+    
 
     return 0;
 }
+
