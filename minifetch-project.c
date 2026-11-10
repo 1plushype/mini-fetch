@@ -189,6 +189,7 @@ int main(void) {
     else if (strcmp(os, "Manjaro Linux") == 0) {
         for (int i = 0; i < 8; i++)
             printf("\033[1;36m%s\033[0m  %s\n", manjaro[i], info[i]);
+            char info[8][192] = {0};
     }
     else if (strcmp(os, "CachyOS") == 0) {
         for (int i = 0; i < 8; i++)
@@ -199,7 +200,7 @@ int main(void) {
     else if (strcmp(os, "Artix Linux") == 0) {
         for (int i = 0; i < 7; i++)
             printf("\033[1;36m%s\033[0m  %s\n", artix[i], info[i]);
-            char info[8][192] = {0};
+            
     }
 
     else if (strcmp(os, "EndeavourOS") == 0) {
