@@ -12,8 +12,10 @@ A light, fast system fetch tool written in C (ofc), minimal and good for minimal
 ## things you need
 To build and run `minifetch`, you will need:
 * `fingers` to type (most important one of the list)
-* `gcc compiler` (GNU's compiler to compile shit)
-* `make tool` (GNU's make tool for shit)
+* `gcc compiler` (GNU's compiler to compile the repo)
+* `clang compiler(llvm)` (optional, but important) 
+* `make tool` (GNU's make tool or any other make tool)
+* `git` (to clone repo)
 * A arch based system or wsl arch for winbloat users
 
 ## Installation
@@ -22,14 +24,16 @@ Clone the repo (very important), compile the code (gentoo shit), and install it 
 ```bash
 git clone https://github.com/1plushype/mini-fetch
 cd mini-fetch
-make (clean, if you want to)
+make
 sudo make install
 ```
 ## important note
 after installation run `minifetch` instead of `mini-fetch` bcs i notice some users do that, so dont make exact same mistake
 
 ### license 
-`GPL-v3` I suppose
+
+mini-fetch is licensed under the GNU General Public License v3.0.
+See the [LICENSE](LICENSE) file for the full text.
 
 ### also visit my TikTok page 
 ```bash

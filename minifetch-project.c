@@ -29,7 +29,7 @@ static const char *cachyos[] = {
 static const char *manjaro[] = {
     "||||||||||  ||||",
     "||||||||||  ||||",
-    "||||        ||||",   
+    "||||        ||||",
     "||||  ||||  ||||",
     "||||  ||||  ||||",
     "||||  ||||  ||||",
@@ -47,7 +47,6 @@ static const char *artix[] = {
     "/.,'`     `'.\\",
 };
 
-
 static const char *endeavouros[] = {
     "          /o.",
     "        /sssso-",
@@ -57,11 +56,6 @@ static const char *endeavouros[] = {
     "//osssssssssssssso+-",
     " `+++++++++++++++-`",
 };
-
-
-
-
-
 
 static const char *garuda[] = {
     "     .----.",
@@ -84,16 +78,18 @@ const char* get_terminal_env(void) {
 void get_terminal_name(char* buffer, size_t max_len) {
     const char* env_term = get_terminal_env();
     if (env_term) {
-        strncpy(buffer, env_term, max_len);
+        strncpy(buffer, env_term, max_len - 1);
+        buffer[max_len - 1] = '\0';
         return;
     }
 
-    pid_t shell_pid = getppid(); 
+    pid_t shell_pid = getppid();
     char path[64];
     snprintf(path, sizeof(path), "/proc/%d/status", shell_pid);
     FILE* fp = fopen(path, "r");
     if (!fp) {
-        strncpy(buffer, "Unknown", max_len);
+        strncpy(buffer, "Unknown", max_len - 1);
+        buffer[max_len - 1] = '\0';
         return;
     }
 
@@ -112,18 +108,17 @@ void get_terminal_name(char* buffer, size_t max_len) {
     if (fp) {
         if (fgets(line, sizeof(line), fp)) {
             char* token = strrchr(line, '/');
-            if (token) {
-                strncpy(buffer, token + 1, max_len);
-            } else {
-                strncpy(buffer, line, max_len);
-            }
+            const char* name = token ? token + 1 : line;
+            strncpy(buffer, name, max_len - 1);
+            buffer[max_len - 1] = '\0';
             fclose(fp);
             return;
         }
         fclose(fp);
     }
 
-    strncpy(buffer, "Unknown", max_len);
+    strncpy(buffer, "Unknown", max_len - 1);
+    buffer[max_len - 1] = '\0';
 }
 
 int main(void) {
@@ -156,7 +151,7 @@ int main(void) {
     const char *user = getenv("USER");
     if (!user) user = "user";
     unsigned long total = si.totalram * si.mem_unit / (1024 * 1024);
-    
+
     unsigned long avail_kb = 0;
     FILE *m = fopen("/proc/meminfo", "r");
     if (m) {
@@ -169,51 +164,38 @@ int main(void) {
     }
 
     unsigned long used = total - avail_kb / 1024;
-    char info[7][192] = {0};
-    
+    char info[8][192] = {{0}};
+
     snprintf(info[0], sizeof info[0], "\033[1;36m%s\033[0m@\033[1;36m%s\033[0m", user, host);
     snprintf(info[1], sizeof info[1], "OS:       %s", os);
     snprintf(info[2], sizeof info[2], "Kernel:   %s", u.release);
     snprintf(info[3], sizeof info[3], "Uptime:   %ldh %ldm", si.uptime / 3600, (si.uptime % 3600) / 60);
     snprintf(info[4], sizeof info[4], "RAM:      %lu / %lu MiB", used, total);
-    
+
     char term_name[64] = {0};
     get_terminal_name(term_name, sizeof(term_name));
     snprintf(info[5], sizeof info[5], "Terminal: %s", term_name);
 
-    if (strcmp(os, "Arch Linux") == 0) {
-        for (int i = 0; i < 7; i++)
-            printf("\033[1;36m%s\033[0m  %s\n", arch[i], info[i]);
+    static const struct { const char *name; const char **logo; int n; } distros[] = {
+        {"Manjaro",     manjaro,     8},
+        {"CachyOS",     cachyos,     8},
+        {"Artix",       artix,       7},
+        {"EndeavourOS", endeavouros, 7},
+        {"Garuda",      garuda,      5},
+        {"Arch",        arch,        7},
+    };
+    const char **logo = arch;   /* fallback voor andere Arch-based distros */
+    int n = 7;
+    for (size_t d = 0; d < sizeof distros / sizeof *distros; d++) {
+        if (strstr(os, distros[d].name)) {
+            logo = distros[d].logo;
+            n = distros[d].n;
+            break;
+        }
     }
 
-    else if (strcmp(os, "Manjaro Linux") == 0) {
-        for (int i = 0; i < 8; i++)
-            printf("\033[1;36m%s\033[0m  %s\n", manjaro[i], info[i]);
-            char info[8][192] = {0};
-    }
-    else if (strcmp(os, "CachyOS") == 0) {
-        for (int i = 0; i < 8; i++)
-            printf("\033[1;36m%s\033[0m  %s\n", cachyos[i], info[i]);
-            char info[8][192] = {0};
-    }
-
-    else if (strcmp(os, "Artix Linux") == 0) {
-        for (int i = 0; i < 7; i++)
-            printf("\033[1;36m%s\033[0m  %s\n", artix[i], info[i]);
-            
-    }
-
-    else if (strcmp(os, "EndeavourOS") == 0) {
-        for (int i = 0; i < 7; i++)
-            printf("\033[1;36m%s\033[0m  %s\n", endeavouros[i], info[i]);
-    }
-
-    else if (strcmp(os, "Garuda ") == 0) {
-        for (int i = 0; i < 5; i++)
-            printf("\033[1;36m%s\033[0m  %s\n", garuda[i], info[i]);
-    }
-    
-    
+    for (int i = 0; i < n; i++)
+        printf("\033[1;36m%s\033[0m  %s\n", logo[i], info[i]);
 
     return 0;
 }
